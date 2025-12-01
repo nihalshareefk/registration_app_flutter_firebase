@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:registration_app_flutter_firebase/login.dart';
+import 'package:registration_app_flutter_firebase/service.dart';
 
-class Signup extends StatelessWidget {
+class Signup extends StatefulWidget {
   const Signup({super.key});
+
+  @override
+  State<Signup> createState() => _SignupState();
+}
+
+class _SignupState extends State<Signup> {
+  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
+  TextEditingController usernamecontroller = TextEditingController();
+  TextEditingController confirm_password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +49,7 @@ class Signup extends StatelessWidget {
             ),
 
             TextField(
+              controller: usernamecontroller,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -56,6 +68,7 @@ class Signup extends StatelessWidget {
               ),
             ),
             TextField(
+              controller: emailcontroller,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -73,6 +86,7 @@ class Signup extends StatelessWidget {
               ),
             ),
             TextField(
+              controller: passwordcontroller,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -90,6 +104,7 @@ class Signup extends StatelessWidget {
               ),
             ),
             TextField(
+              controller: confirm_password,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -110,6 +125,14 @@ class Signup extends StatelessWidget {
                   side: BorderSide(color: Colors.black),
                 ),
                 onPressed: () {
+                  register(
+                    Username: usernamecontroller.text,
+                    Email: emailcontroller.text,
+                    Password: passwordcontroller.text,
+                    Confirmpassword: confirm_password.text,
+                    context: context,
+                  );
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Signup()),
@@ -118,7 +141,8 @@ class Signup extends StatelessWidget {
                 child: Text("Sign up", style: TextStyle(fontSize: 20)),
               ),
             ),
-            SizedBox(height: 180,),            Row(
+            SizedBox(height: 180),
+            Row(
               children: [
                 Text(
                   "          Already have an account?",

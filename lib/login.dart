@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:registration_app_flutter_firebase/forgot.dart';
+import 'package:registration_app_flutter_firebase/service.dart';
 import 'package:registration_app_flutter_firebase/signup.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  TextEditingController emailcontroller=TextEditingController();
+  TextEditingController passwordcontroller=TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +48,7 @@ class Login extends StatelessWidget {
               ),
             ),
         
-            TextField(
+            TextField(controller:emailcontroller ,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -56,7 +66,7 @@ class Login extends StatelessWidget {
                 style: TextStyle(color: Colors.black, fontSize: 20),
               ),
             ),
-            TextField(
+            TextField(controller: passwordcontroller,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -96,10 +106,7 @@ class Login extends StatelessWidget {
                   side: BorderSide(color: Colors.black),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Login()),
-                  );
+                  login(Email: emailcontroller.text, Password: passwordcontroller.text, context: context);
                 },
                 child: Text("Login", style: TextStyle(fontSize: 20)),
               ),

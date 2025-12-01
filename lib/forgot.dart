@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:registration_app_flutter_firebase/login.dart';
+import 'package:registration_app_flutter_firebase/service.dart';
 
-class Forgot extends StatelessWidget {
+class Forgot extends StatefulWidget {
   const Forgot({super.key});
+
+  @override
+  State<Forgot> createState() => _ForgotState();
+}
+
+class _ForgotState extends State<Forgot> {
+  TextEditingController emailcontroller=TextEditingController();
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +48,7 @@ class Forgot extends StatelessWidget {
               ),
             ),
 
-            TextField(
+            TextField(controller: emailcontroller,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -62,10 +73,7 @@ class Forgot extends StatelessWidget {
                   side: BorderSide(color: Colors.black),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Login()),
-                  );
+                 forgot(Email: emailcontroller.text, context: context);
                 },
                 child: Text("Send link", style: TextStyle(fontSize: 20)),
               ),
