@@ -1,0 +1,22 @@
+ SizedBox(
+                height: 55,
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue[700],
+                    foregroundColor: Colors.white,
+                    side: BorderSide(color: Colors.black),
+                  ),
+                  onPressed: () {
+                    if(formkey.currentState!.validate()){
+                    register(
+                      Username: usernamecontroller.text,
+                      Email: emailcontroller.text,
+                      Password: passwordcontroller.text,
+                      Confirmpassword: confirm_password.text,
+                      context: context,
+                    );}
+                  },
+                  child: Text("Sign up", style: TextStyle(fontSize: 20)),
+                ),
+              ),

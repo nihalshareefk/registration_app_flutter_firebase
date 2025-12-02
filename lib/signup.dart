@@ -147,8 +147,19 @@ class _SignupState extends State<Signup> {
                     return("Invalid Password");
                   }
               },
+                 obscureText: isvisible,
                 controller: confirm_password,
                 decoration: InputDecoration(
+
+                     suffixIcon: IconButton(onPressed: () {
+                  setState(() {
+                    isvisible=!isvisible;
+                  });
+                }, icon: isvisible?Icon(Icons.visibility_off):Icon(Icons.visibility)),
+
+
+
+
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -158,7 +169,7 @@ class _SignupState extends State<Signup> {
                 ),
               ),
               SizedBox(height: 70),
-              SizedBox(
+             SizedBox(
                 height: 55,
                 width: double.infinity,
                 child: ElevatedButton(
@@ -176,16 +187,23 @@ class _SignupState extends State<Signup> {
                       Confirmpassword: confirm_password.text,
                       context: context,
                     );}
-
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Signup()),
-                    );
                   },
                   child: Text("Sign up", style: TextStyle(fontSize: 20)),
                 ),
               ),
-              SizedBox(height: 180),
+
+
+
+
+
+
+
+
+
+
+
+             
+              SizedBox(height: 10),
               Row(
                 children: [
                   Text(
